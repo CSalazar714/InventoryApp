@@ -1,2 +1,2 @@
-# InventoryApp
-Webhosted Inventory App
+# InventoryAppBackend
+Webhosted backend of Inventory App
