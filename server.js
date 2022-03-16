@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const dotenv = require('dotenv')
 const mongooseConnect = require('./config')
 const inventoryRouter = require('./Routes/inventoryRoutes')
-const categoryRouter = require('./Routes/categoryRouter')
+const categoryRouter = require('./Routes/categoryRoutes')
 const morgan = require('morgan')
 const cors = require('cors')
 
@@ -19,8 +19,8 @@ app.use(bodyParser.json())
 app.use(morgan('dev'))
 
 
-app.use('/inventory', inventoryRouter)
-app.use('/category', categoryRouter)
+// app.use('/inventory', inventoryRouter)
+// app.use('/category', categoryRouter)
 
 
 const PORT = process.env.PORT || 4040

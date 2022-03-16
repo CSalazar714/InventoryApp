@@ -1,5 +1,5 @@
 const express = require('express')
-const Inventory = require('../schema/todoSchema')
+const Inventory = require('../schema/inventoryItemSchema')
 
 //Router
 const inventoryRouter = express.Router()
