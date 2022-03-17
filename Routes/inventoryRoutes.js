@@ -19,7 +19,7 @@ inventoryRouter.get("/", (req, res)=>{
 
 
 //Inventory/Item Get
-inventoryRouter.get("/item", (req, res)=>{
+inventoryRouter.get("/:item", (req, res)=>{
       Inventory.find((error, result)=>{
           if(error){
               res.status(500).json({message: error.message})
@@ -31,24 +31,10 @@ inventoryRouter.get("/item", (req, res)=>{
       })
   })
 
-  //Inventory/Item Post
-inventoryRouter.post("/item", (req, res)=>{
-    const inventory = req.body
-    inventory.created_at = Date.now()
-    inventory.sold = false
-    Inventory.create(item, (error, result)=>{
-        if(error){
-            res.status(400).json({message: error.message})
-        }
-        if(result ===  null || result === []){
-            res.status(400).json({message: error.message})
-        }
-        res.status(201).json({inventory_item: result})
-    })
-})
+
 
 //Inventory/Item Put
-inventoryRouter.put("/:item", (req, res)=>{
+inventoryRouter.put("/item/:itemid", (req, res)=>{
     const item = req.params.item
     const update = req.body
 
@@ -64,7 +50,7 @@ inventoryRouter.put("/:item", (req, res)=>{
 })
 
 //Inventory/Item Delete
-inventoryRouter.delete("/:item", (req, res)=>{
+inventoryRouter.delete("/item/:itemid", (req, res)=>{
     const item = req.params.item
     Inventory.findByIdAndDelete(item, (error, result)=>{
         if(error){

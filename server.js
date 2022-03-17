@@ -19,8 +19,8 @@ app.use(bodyParser.json())
 app.use(morgan('dev'))
 
 
-// app.use('/inventory', inventoryRouter)
-// app.use('/category', categoryRouter)
+app.use('/inventory', inventoryRouter)
+app.use('/category', categoryRouter)
 
 
 const PORT = process.env.PORT || 4040
