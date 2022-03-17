@@ -4,7 +4,7 @@ const Inventory = require('../schema/inventoryItemSchema')
 //Router
 const inventoryRouter = express.Router()
 
-//Finding Inventory
+//retrieves all inventory
 inventoryRouter.get("/", (req, res)=>{
     Inventory.find((error, result)=>{
         if(error){
@@ -18,8 +18,8 @@ inventoryRouter.get("/", (req, res)=>{
 })
 
 
-//Inventory/Itemid Get
-inventoryRouter.get("/inventory/:itemid", (req, res)=>{
+// Gets specific Item
+inventoryRouter.get("/:itemid", (req, res)=>{
     const item = req.params.itemid
       Inventory.find(item, (error, result)=>{
           if(error){
@@ -34,8 +34,8 @@ inventoryRouter.get("/inventory/:itemid", (req, res)=>{
 
 
 
-//Inventory/Item Put
-inventoryRouter.put("/inventory/:itemid", (req, res)=>{
+//Updates Specific Item
+inventoryRouter.put("/:itemid", (req, res)=>{
     const itemid = req.params.itemid
     const update = req.body
 
@@ -50,8 +50,8 @@ inventoryRouter.put("/inventory/:itemid", (req, res)=>{
     })
 })
 
-//Inventory/Item Delete
-inventoryRouter.delete("/inventory/:itemid", (req, res)=>{
+//Deletes Specific Item
+inventoryRouter.delete("/:itemid", (req, res)=>{
     const itemid = req.params.itemid
     Inventory.findByIdAndDelete(itemid, (error, result)=>{
         if(error){

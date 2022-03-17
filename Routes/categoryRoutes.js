@@ -1,10 +1,11 @@
 const express = require('express')
 const Category = require('../schema/categorySchema')
+const Inventory = require('../Schema/inventoryItemSchema')
 
 //Router
 const categoryRouter = express.Router()
 
-//Looking up Category
+//Retrieving all Categories
 categoryRouter.get("/", (req, res)=>{
     Category.find((error, result)=>{
         if(error){
@@ -13,27 +14,28 @@ categoryRouter.get("/", (req, res)=>{
         if(result ===  null || result === []){
             res.status(404).json({message: error.message})
         }
-        res.status(200).json({inventory_list: result})
+        res.status(200).json({category_id: result})
     })
 })
-
+//Creating a new Category
 categoryRouter.post('/', (req,res) => {
-      Category.find((error, result)=>{
+    const category = req.body
+      Category.create( category, (error, result)=>{
             if(error){
                 res.status(500).json({message: error.message})
             }
             if(result ===  null || result === []){
                 res.status(404).json({message: error.message})
             }
-            res.status(200).json({inventory_list: result})
+            res.status(200).json({category_id: result})
         })
     })
 
 
-//Inventory/Item Get
+//Retrieves all items within a category
 categoryRouter.get("/:categoryid", (req, res)=>{
     const categoryid = req.params.categoryid
-      Category.find(categoryid, (error, result)=>{
+      Inventory.find({Category_Id: categoryid}, (error, result)=>{
           if(error){
               res.status(500).json({message: error.message})
           }
@@ -44,12 +46,10 @@ categoryRouter.get("/:categoryid", (req, res)=>{
       })
   })
 
-  //Inventory/Item Post
+  //Creating an item in a category
 categoryRouter.post("/:categoryid", (req, res)=>{
     const category = req.body
-    category.created_at = Date.now()
-    category.sold = false
-    category.category_id = req.params.categoryid
+    category.Category_Id = req.params.categoryid
     Inventory.create(category, (error, result)=>{
         if(error){
             res.status(400).json({message: error.message})
