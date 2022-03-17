@@ -18,9 +18,10 @@ inventoryRouter.get("/", (req, res)=>{
 })
 
 
-//Inventory/Item Get
-inventoryRouter.get("/:item", (req, res)=>{
-      Inventory.find((error, result)=>{
+//Inventory/Itemid Get
+inventoryRouter.get("/inventory/:itemid", (req, res)=>{
+    const item = req.params.itemid
+      Inventory.find(item, (error, result)=>{
           if(error){
               res.status(500).json({message: error.message})
           }
@@ -34,11 +35,11 @@ inventoryRouter.get("/:item", (req, res)=>{
 
 
 //Inventory/Item Put
-inventoryRouter.put("/item/:itemid", (req, res)=>{
-    const item = req.params.item
+inventoryRouter.put("/inventory/:itemid", (req, res)=>{
+    const itemid = req.params.itemid
     const update = req.body
 
-    Inventory.findByIdAndUpdate(item, update, {new: true}, (error, result)=>{
+    Inventory.findByIdAndUpdate(itemid, update, {new: true}, (error, result)=>{
         if(error){
             res.status(500).json({message: error.message})
         }
@@ -50,9 +51,9 @@ inventoryRouter.put("/item/:itemid", (req, res)=>{
 })
 
 //Inventory/Item Delete
-inventoryRouter.delete("/item/:itemid", (req, res)=>{
-    const item = req.params.item
-    Inventory.findByIdAndDelete(item, (error, result)=>{
+inventoryRouter.delete("/inventory/:itemid", (req, res)=>{
+    const itemid = req.params.itemid
+    Inventory.findByIdAndDelete(itemid, (error, result)=>{
         if(error){
             res.status(404).json({message: error.message})
         }

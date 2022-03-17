@@ -32,7 +32,8 @@ categoryRouter.post('/', (req,res) => {
 
 //Inventory/Item Get
 categoryRouter.get("/:categoryid", (req, res)=>{
-      Category.find((error, result)=>{
+    const categoryid = req.params.categoryid
+      Category.find(categoryid, (error, result)=>{
           if(error){
               res.status(500).json({message: error.message})
           }
@@ -44,7 +45,7 @@ categoryRouter.get("/:categoryid", (req, res)=>{
   })
 
   //Inventory/Item Post
-categoryRouter.post("/categoryid", (req, res)=>{
+categoryRouter.post("/:categoryid", (req, res)=>{
     const category = req.body
     category.created_at = Date.now()
     category.sold = false
