@@ -1,5 +1,5 @@
 const express = require('express')
-const Category = require('../schema/categorySchema')
+const Category = require('../Schema/categorySchema')
 const Inventory = require('../Schema/inventoryItemSchema')
 
 //Router
