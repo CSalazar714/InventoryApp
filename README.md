@@ -10,6 +10,9 @@ https://wireframe.cc/rDGrPc
 
 Inventory Page
 https://wireframe.cc/8pJlNq
+GithubLinks:
+Backend: https://github.com/CSalazar714/InventoryAppBackend
+FrontendL https://github.com/CSalazar714/inventoryfrontend
 
 Netlify Link (Front-End):
 https://determined-mirzakhani-846e29.netlify.app
