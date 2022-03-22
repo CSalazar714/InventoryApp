@@ -2,14 +2,16 @@
 # InventoryApp
 Webhosted Inventory App
 
-Title Page
+Home Page
 https://wireframe.cc/RF2XvL
 
-Adding Inventory
+AddItemForm
 https://wireframe.cc/rDGrPc
 
-Current Inventory
+Inventory Page
 https://wireframe.cc/8pJlNq
+
+
 =======
 # InventoryAppBackend
 Webhosted backend of Inventory App
